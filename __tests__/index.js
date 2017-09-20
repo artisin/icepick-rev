@@ -1,4 +1,4 @@
-const i = require('./icepick')
+const i = require('../lib/index.js')
 const tap = require('tap')
 
 function test (what, how) {
@@ -547,8 +547,8 @@ test('production mode', assert => {
   let oldEnv
   oldEnv = process.env.NODE_ENV
   process.env.NODE_ENV = 'production'
-  delete require.cache[require.resolve('./icepick')]
-  const i = require('./icepick')
+  delete require.cache[require.resolve('../lib/index.js')]
+  const i = require('../lib/index.js')
 
   assert.tearDown(function () {
     process.env.NODE_ENV = oldEnv

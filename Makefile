@@ -11,15 +11,15 @@ lint: setup
 	standard
 
 dev:
-	mocha --watch icepick.test.js --growl
+	tap __tests__/
 
 watch: dev
 
 test: setup
-	mocha icepick.test.js
+	tap __tests__/
 
 coverage:
-	nyc mocha icepick.test.js
+	tap __tests__/ -R spec --100
 
 pre-commit: lint
 
