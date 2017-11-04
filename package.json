@@ -1,6 +1,6 @@
 {
   "name": "icepick-rev",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "Same as Icepick but built/compiled with Webpack",
   "license": "MIT",
   "author": "Alexander Early <alexander.early@gmail.com>",

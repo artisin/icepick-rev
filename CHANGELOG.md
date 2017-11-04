@@ -1,3 +1,6 @@
+# v3.0.0
+- Webpack build/compile feature update
+
 # v2.1.1
 - Fix readme display on npmjs.org
 
