@@ -1,4 +1,4 @@
-const i = require('../lib/index.js')
+const i   = require('../dist/icepick.js')
 const tap = require('tap')
 
 function test (what, how) {
