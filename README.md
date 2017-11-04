@@ -1,4 +1,11 @@
-# icepick
+# icepick-rev
+
+## Note
+
+This library is the same as [icepick](https://github.com/aearly/icepick) except fot the fact it's build and compiled with Webpack. To make a long story short, I needed the ES6 code in [icepick](https://github.com/aearly/icepick) to be compiled because otherwise it would throw an error with UglifyJs in my transpiling build stage. So I went ahead and rebuilt the dev/build pipeline so that it uses Webpack and works with my build. While I was at it I also created proper builds for three targets, `node`, `browser`, and `browser.min`. However, since these changes diverge significantly from the current build Alexander Early (creator) understandably did now what to merge my update/changes thus `icepick-rev`.
+
+
+## Info
 
 Utilities for treating frozen JavaScript objects as persistent immutable collections.
 
