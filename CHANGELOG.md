@@ -1,3 +1,6 @@
+# v3.1.0
+- Remove es6 `module` `package.json` entry
+
 # v3.0.0
 - Webpack build/compile feature update
 
