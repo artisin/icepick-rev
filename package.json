@@ -1,6 +1,6 @@
 {
   "name": "icepick-rev",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Same as Icepick but built/compiled with Webpack",
   "license": "MIT",
   "author": "Alexander Early <alexander.early@gmail.com>",
@@ -9,7 +9,6 @@
   ],
   "homepage": "https://github.com/artisin/icepick-rev",
   "main": "dist/icepick.js",
-  "module": "lib/index.js",
   "keywords": [
     "clojure",
     "collections",
