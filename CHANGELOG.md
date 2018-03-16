@@ -1,5 +1,6 @@
-# v3.1.0
-- Remove es6 `module` `package.json` entry
+# v3.3.0
+- Added `dissocIn`/`unsetIn`, the analog to `assocIn`/`setIne`
+- Make `map` and `filter` work properly with `chain`
 
 # v3.0.0
 - Webpack build/compile feature update
