@@ -1,6 +1,6 @@
 {
   "name": "icepick-rev",
-  "version": "3.1.0",
+  "version": "3.3.0",
   "description": "Same as Icepick but built/compiled with Webpack",
   "license": "MIT",
   "author": "Alexander Early <alexander.early@gmail.com>",
@@ -34,7 +34,7 @@
     "dev": "webpack -w",
     "pretest": "tap __tests__/",
     "preversion": "npm run dist:prod",
-    "test": "tap __tests__/ -R spec --100"
+    "test": "tap __tests__/ -R spec --cov"
   },
   "dependencies": {},
   "devDependencies": {

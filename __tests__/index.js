@@ -205,6 +205,53 @@ test('icepick', assert => {
     })
   })
 
+  test('dissocIn', assert => {
+    test('should work recursively', assert => {
+      const o = i.freeze({a: 1, b: 2, c: {a: 4}})
+      const result = i.dissocIn(o, ['c', 'a'])
+
+      assert.same(result, {a: 1, b: 2, c: {}})
+    })
+
+    test('should work recursively (deeper)', assert => {
+      const o = i.freeze({
+        a: 1,
+        b: {a: 2},
+        c: [
+          {
+            a: 3,
+            b: 4
+          },
+          {a: 4}
+        ]
+      })
+      const result = i.dissocIn(o, ['c', 0, 'a'])
+
+      assert.equal(result.c[0].a, undefined)
+      assert.notEqual(result, o)
+      assert.equal(result.b, o.b)
+      assert.notEqual(result.c, o.c)
+      assert.notEqual(result.c[0], o.c[0])
+      assert.equal(result.c[0].b, o.c[0].b)
+      assert.equal(result.c[1], o.c[1])
+    })
+
+    test("should not create collections if they don't exist", assert => {
+      const result = i.dissocIn({}, ['a', 'b', 'c'])
+      assert.same(result, {})
+    })
+
+    test('should be aliased as unsetIn', assert => {
+      assert.equal(i.unsetIn, i.dissocIn)
+    })
+
+    test('should keep references the same if nothing changes', assert => {
+      const o = i.freeze({a: {b: 1}})
+      const result = i.dissocIn(o, ['a', 'b', 'c'])
+      assert.equal(result, o)
+    })
+  })
+
   test('getIn', assert => {
     test('should work', assert => {
       const o = i.freeze({
@@ -541,14 +588,24 @@ test('chain', assert => {
     assert.ok(Object.isFrozen(result))
     assert.same(result, [0, 1, 2, 3])
   })
+
+  test('should work with map and filter', assert => {
+    const o = [1, 2, 3]
+    const result = i.chain(o)
+      .map(val => val * 2)
+      .filter(val => val > 2)
+      .value()
+    assert.ok(Object.isFrozen(result))
+    assert.same(result, [4, 6])
+  })
 })
 
 test('production mode', assert => {
   let oldEnv
   oldEnv = process.env.NODE_ENV
   process.env.NODE_ENV = 'production'
-  delete require.cache[require.resolve('../lib/index.js')]
-  const i = require('../lib/index.js')
+  delete require.cache[require.resolve('../dist/icepick.js')]
+  const i = require('../dist/icepick.js')
 
   assert.tearDown(function () {
     process.env.NODE_ENV = oldEnv
